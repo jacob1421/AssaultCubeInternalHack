@@ -29,12 +29,10 @@ vector3 PlayerEntity::getPosition() {
 vector2 PlayerEntity::getViewAngles() {
 	return this->view_angles;
 }
-WeaponEntity* PlayerEntity::getWeaponPtr() {
-	return this->currWeapon;
-}
+
 
 void PlayerEntity::toString() {
-	printf("\nName: %s\nHealth: %i\nArmor:%i\nKills: %i\nDeaths: %i\nTeam: %i\nWeaponPointer: %p\n", this->name, this->health, this->armor, this->kills, this->deaths, this->team, ((DWORD*)this->currWeapon + 0xC));
+	printf("\nName: %s\nHealth: %i\nArmor:%i\nKills: %i\nDeaths: %i\nTeam: %i\n", this->name, this->health, this->armor, this->kills, this->deaths, this->team);
 	printf("Position = X: %.2f Y: %.2f Z: %.2f\n", this->position.x, this->position.y, this->position.z);
-	printf("View Angles = Pitch: %.2f Yaw: %.2f", this->view_angles.pitch, this->view_angles.yaw);
+	printf("View Angles = Pitch: %.2f Yaw: %.2f\n", this->view_angles.pitch, this->view_angles.yaw);
 }

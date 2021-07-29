@@ -8,17 +8,26 @@
 using namespace std;
 
 //Globals variables
-PlayerEntity* local_player_ptr;
-PlayerEntity* players_ptr[MAX_LOBBY_SIZE];
+PlayerEntity* local_player;
+PlayerEntity* players[32];
 
 FILE* fConsoleOut;
 
 DWORD WINAPI read_player_data(__in LPVOID lpParam){
     //Cast the local player pointer to a PlayerEntity pointer and set the local_player pointer
-    local_player_ptr = (PlayerEntity*)(*(DWORD*)(local_player_offset));
-    //for (int i = 0; i < MAX_LOBBY_SIZE; i++) {
-    //    players_ptr[i] = (PlayerEntity*)(*(DWORD*)(*(DWORD*)entity_list_offset) + (i * 4));
-    //}
+    local_player = (PlayerEntity*)(*(uintptr_t*)(local_player_ptr));
+    
+    /* GET PLAYERS */
+    //Clear Array
+    memset(players, 0, sizeof(players));
+    //Update Array
+    char size = ((char)*(uintptr_t*)entity_list_number_ptr);
+    for (int i = 0; i < size; i++) {
+        PlayerEntity* player = (PlayerEntity*)*(uintptr_t*)(((BYTE*)(uintptr_t*)*(uintptr_t*)(entity_list_ptr)) + (i * 4));
+        if (player != NULL) {
+            players[i] = player;
+        }
+    }
 
     Sleep(10);
     return 0;
@@ -29,10 +38,6 @@ DWORD WINAPI main_thread(HINSTANCE hModule) {
         if (GetAsyncKeyState(VK_F7)) {
             printf("Injection Removed\n");
             break;
-        }
-        if (GetAsyncKeyState(VK_F6)) {
-            local_player_ptr->toString();
-            Sleep(100);
         }
     }
     FreeLibraryAndExitThread(hModule, 0);

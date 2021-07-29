@@ -24,9 +24,6 @@
     <ClInclude Include="PlayerEntity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="WeaponEntity.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Offsets.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -39,9 +36,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PlayerEntity.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="WeaponEntity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

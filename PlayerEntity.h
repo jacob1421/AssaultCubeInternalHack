@@ -54,6 +54,7 @@ class PlayerEntity{
 		char* getName();
 		void toString();
 		WeaponEntity* getWeaponPtr();
+		void updateWeaponPtr();
 };
 
 #endif

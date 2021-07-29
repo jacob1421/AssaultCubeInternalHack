@@ -1,9 +1,9 @@
 #ifndef OFFSETS
 #define OFFSETS
 
-#define local_player_offset 0x50F4F4
-#define entity_list_offset 0x50F4F8 
+#define local_player_ptr 0x50F4F4
 
-#define MAX_LOBBY_SIZE 32
+#define entity_list_ptr 0x50F4F8 
+#define entity_list_number_ptr 0x50F500
 
 #endif
